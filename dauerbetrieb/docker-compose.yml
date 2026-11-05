@@ -1,0 +1,12 @@
+# Aufruf im Ordner des Repos:  docker compose -f dauerbetrieb/docker-compose.yml up -d --build
+# network_mode: host ist noetig, damit der Container das Heimnetz absuchen kann (auf Linux/NAS/Raspberry Pi; Docker Desktop auf Mac/Windows
+# kann das nicht). Feste Adressen statt Suche: WETTERCUBE_GERAETE=192.168.1.50,192.168.1.51
+services:
+  wettercube-control:
+    build: { context: .., dockerfile: dauerbetrieb/Dockerfile }
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - control-daten:/root          # Verlauf (SQLite) und Liste der bekannten Geraete
+volumes:
+  control-daten:

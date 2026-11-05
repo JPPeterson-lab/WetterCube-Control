@@ -1,0 +1,30 @@
+name: Programme bauen
+# Baut "WetterCube Control" als Mac-App und Windows-Programm (Ergebnis: Artefakte zum Herunterladen).
+# Starten: GitHub -> Actions -> "Programme bauen" -> Run workflow (oder ein Tag v* pushen).
+on:
+  workflow_dispatch: {}
+  push:
+    tags: ["v*"]
+jobs:
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python -m pip install --upgrade pip pyinstaller rumps esptool==4.13.0 pyserial certifi keyring
+      - run: pyinstaller --noconfirm "WetterCube Control.spec"
+      - run: cd dist && ditto -c -k --keepParent "WetterCube Control.app" WetterCube-Control-mac.zip
+      - uses: actions/upload-artifact@v4
+        with: { name: WetterCube-Control-mac, path: dist/WetterCube-Control-mac.zip }
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python -m pip install --upgrade pip pyinstaller pystray pillow esptool==4.13.0 pyserial certifi keyring
+      - run: pyinstaller --noconfirm "WetterCube Control.spec"
+      - run: Compress-Archive -Path "dist/WetterCube Control" -DestinationPath "dist/WetterCube-Control-windows.zip"
+      - uses: actions/upload-artifact@v4
+        with: { name: WetterCube-Control-windows, path: dist/WetterCube-Control-windows.zip }

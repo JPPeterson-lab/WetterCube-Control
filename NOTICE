@@ -1,0 +1,19 @@
+WetterCube Control
+Copyright 2026 Jan Althaus (JPPeterson-lab)
+
+Licensed under the GNU Affero General Public License, version 3 (AGPL-3.0-only, see the file LICENSE).
+Anyone who modifies this software and distributes it, or lets others use it over a network, must offer the complete
+source code of the modified version under the same licence. Use that does not fit these terms (for example a
+closed-source commercial product) needs a separate commercial licence from the author (see https://wettercube.de).
+A commercial licence can only cover the author's own code, not the third-party components listed below.
+
+Name and logos: "WetterCube", "WetterCube Control" and the WetterCube logos are not licensed under the
+AGPL; no trademark rights are granted (declined under section 7(e) of the licence).
+All rights to the name and the logos are reserved by Jan Althaus. They may be shown unchanged when reporting on
+the project; forks and derived products need their own name and logo. Rules: https://wettercube.de/logo-nutzung/
+
+Texts, images and documentation (README, graphics) are licensed under CC BY-NC 4.0, see LICENSE-Dokumentation.txt.
+
+Third-party components (details in CREDITS.md): esptool (GPL-2.0-or-later), pyserial (BSD-3-Clause), certifi (MPL-2.0), keyring (MIT),
+rumps (BSD-3-Clause, macOS), pystray (LGPL-3.0, Windows/Linux), Pillow (MIT-CMU), PyInstaller (GPL-2.0-or-later with
+bootloader exception, build tool), Python (PSF-2.0), Montserrat font (OFL-1.1, logo outlines).
